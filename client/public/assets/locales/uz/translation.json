@@ -1,0 +1,33 @@
+{
+    "header": {
+        "h1": "ANEST FARMASEFTIK KOMPANIYASI",
+        "p": "kompaniyasi 2016 yildan buyon oz faoliyatini yuritib kelmoqda giyohlar va tabiiy va mahsulotlardan tarkib topgan kampaniyaning maqsadi o’z mijozlariga halolik bilan hizmat korsatadi har bir ishlab chiqarilayotgan prepartining sertifikati bor",
+        "mijoz": "mijozlar",
+        "dorixona": "dorixonalar",
+        "mahsulot": "mahsulotlar"
+    },
+    "about": {
+        "about": "Biz haqimizda",
+        "team": "Anest jamoasi",
+        "text": "kompaniyasi 2014 yilda tashkil etilgan O'zbekiston farmatsevtika bozorida tez rivojlanayotgan biri hisoblanadi - dorivor o'simliklardan vitaminlar, minerallar, tabiiy preparatlar ishlab chiqarishga va hayotiylik va sog'likni mustahkamlashga ixtisoslashgan farmatsevtika  ANEST ning barcha mahsulotlari o'simlik va mineral kelib chiqishi tabiiy xom ashyosi asosida"
+    },
+    "navbar": {
+        "home": "Bosh sahifa",
+        "about": "Biz haqimizda",
+        "news": "Yangiliklar",
+        "products": "Mahsulotlar",
+        "contact": "Kontakt"
+    },
+    "product": {
+        "about": "Mahsulot haqida",
+        "tarkib": "Mahsulot tarkibi",
+        "tav": "Tavsif",
+        "ish": "Ishlatilishi",
+        "buy": "Sotib olish",
+        "ko": "Ko'proq"
+    },
+    "contact": {
+        "address": "Manzil",
+        "send": "Jo'natish"
+    }
+}

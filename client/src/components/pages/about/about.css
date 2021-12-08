@@ -1,0 +1,102 @@
+.about{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.about__wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.about__img-1, .about__img-2, .about__img-3{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.about__img-1{
+    display: flex;
+    justify-content: space-between;
+}
+.about__img-2{
+    display: flex;
+    justify-content: flex-end;
+}
+.about__img-1 img{
+    width: calc(280px + (340 - 280) * ((100vw - 320px) / (1200 - 320)));
+}
+.about__img-1 img:last-of-type{
+    width: calc(280px + (450 - 280) * ((100vw - 320px) / (1200 - 320)));
+}
+.about__img-2 img{
+    width: calc(290px + (580 - 290) * ((100vw - 320px) / (1200 - 320)));
+}
+.about__img-3 img{
+    width: calc(270px + (350 - 270) * ((100vw - 320px) / (1200 - 320)));
+}
+
+
+
+/* ************** */
+
+
+
+.about__info-wrapper img{
+    width: 100%;
+}
+.about__info-wrapper{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+}
+.about__info-text{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.about__info-text h2{
+    font-size: 40px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #000;
+}
+.about__info-text p{
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+}
+
+
+/* ******************************* */
+
+@media(max-width:1029px){
+    .about__img-2 img{
+        width: 100%;
+    }
+    /* .about__img-3{
+        justify-content: flex-end;
+    } */
+    .about__img-1, .about__img-2, .about__img-3 {
+        justify-content: center;
+    }
+    .about__img-1{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media(max-width:576px){
+    .about__info-text h2{
+        font-size: 30px;
+        line-height: 28px;
+    }
+    .about__info-text p{
+        font-size: 18px;
+        line-height: 24px;
+    }
+}

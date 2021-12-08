@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+  
+body{
+    font-family: 'Roboto', sans-serif;
+}
+/* ====== app ==== */
+.app .item{
+  text-decoration: none;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.app .menu_top{
+  background-color: royalblue;
+  padding: 25px 0;
+  margin-bottom: 60px;
+}
+.app .menu_top img{
+  width: 85%;
+  height: 65%;
+  display: block;
+  margin: auto;
+}
+/* ========== navbar =========== */
+.navbar{
+  background-color: royalblue;
+}
+.navbar h1{
+    margin-bottom: 100px;
+}
+.navbar .ant-dropdown-link{
+  display: flex;
+  align-items: center;
+}
+.navbar .ant-dropdown-link p{
+  margin: 0;
+  line-height: 20px;
+  margin-right: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+/* news */
+.news .form-group textarea{
+    margin-bottom: 30px;
+  }
+  .news .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .news{
+    padding: 15px 0 60px;
+  }
+  .news .form-group{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .news .form-group .group{
+    width: 30%;
+  }
+  .news .form-group .group input{
+    margin-bottom: 25px;
+    padding: 20px 6px;
+  }
+  .news .form-group .group label, .news .form-coor label, .news .form-nomer label{
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  .news .form-file{
+    width: 25%;
+    margin-bottom: 30px;
+  }
+  .new .delete_item, .profile .delete_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .new .table{
+    margin-top: 30px;
+  }
+  .news .input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .news .form-nomer .input input{
+    padding: 5px 6px;
+  }
+  .news .form-nomer{
+    width: 35%;
+    margin-bottom: 30px;
+  }
+  .news .form-nomer span{
+    background-color: silver;
+    width: 50%;
+    padding: 4px 3px;
+  }
+  .news .form-coor{
+    width: 60%;
+    margin-bottom: 30px;
+
+  }
+  .news .form-coor textarea{
+    padding: 6px 6px 50px 6px;
+  }
+  /* ========== navbar ======== */
+.navbar{
+    /* border-bottom: 2px solid rgba(0, 0, 0, 0.137); */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.137);
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+.navbar h1{
+    font-size: 20px;
+    margin: 0;
+}
+.navbar ul{
+    display: flex;
+    margin: 0px;
+}  
+.navbar a{
+  text-decoration: none;
+}
+.menu_item{
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all ease 0.4s;
+}
+.navbar img{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+/* === login ==== */
+.login{
+  margin-top: 5%;
+}
+
+.login .form-auto{
+  margin: auto;
+}
+
+.login form{
+  background-color: #FFFFFF;
+padding: 30px;
+border: 2px solid rgba(0, 0, 0, 0.219);
+}
+
+.login .button .btn{
+  width: 100%;
+}
+.login input{
+  margin-bottom: 30px;
+border: none;
+outline: none;
+border-bottom: 2px solid rgba(0, 0, 0, 0.219);
+}
