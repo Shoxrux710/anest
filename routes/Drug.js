@@ -114,7 +114,6 @@ router.get('/all/:id', (req, res) => {
 
     Drug.findById(id, (err, oneDrug) => {
        if (err) res.status(400).json({errorMessage: "Xato"})
-       console.log(oneDrug);
 
         res.status(200).json({oneDrug})
     })

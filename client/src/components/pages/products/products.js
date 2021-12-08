@@ -48,6 +48,7 @@ const Products = () => {
               }
 
               return (
+                  <Link to={`/product/${items._id}`}>
                 <div className="products__item" key={items._id}>
                   <div className="product-img">
                     <img src={`/drug/${items.imageDrug.fileName}`} alt="dori"></img>
@@ -56,14 +57,13 @@ const Products = () => {
                     <h4>{items.title[lang]}</h4>
                     <AiFillHeart />
                   </div>
-                  <Link to={`/product/${items._id}`}>
                     <div className="products__item-text">
                       <p>
                         {descriptionContinue}{continueText}
                       </p>
                     </div>
-                  </Link>
                 </div>
+                  </Link>
               )
             })
         }

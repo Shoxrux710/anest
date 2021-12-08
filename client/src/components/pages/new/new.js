@@ -54,17 +54,19 @@ const New = () => {
         <h2 className="title">Yangiliklar</h2>
         <div className="new__info">
           <div className="new__info-left">
+            <Link to={`/newinfo/${idOne}`}>
             <div
               className="new__item"
               style={{ backgroundImage: `url('${imagesNews}')` }}
             >
               <ul className="new__item-list">
                 <h4>{title}</h4>
-                <Link to={`/newinfo/${idOne}`}><li>
+                  <li>
                   {description}
-                </li></Link>
+                </li>
               </ul>
             </div>
+                </Link>
           </div>
           <div className="new__info-right">
             {
@@ -81,15 +83,17 @@ const New = () => {
                   }
                 }
                 return (
+                      <Link to={`/newinfo/${idOne}`}>
                   <div className="new__info-item" key={items._id}>
                     <img src={`/news/${items.imageNews.fileName}`} alt="noname"></img>
                     <div className="new__item-text">
                       <h4>{items.title[lang]}</h4>
-                      <Link to={`/newinfo/${idOne}`}><li>
+                        <li>
                         {descriptionContinue}{continueText}
-                      </li></Link>
+                      </li>
                     </div>
                   </div>
+                      </Link>
                 )
               })
             }
@@ -110,17 +114,19 @@ const New = () => {
                   }
                 }
               return (
+                <Link to={`/newinfo/${items._id}`}>
                 <div
                   className="new__catalog-item"
-                  style={{ backgroundImage: `url('${items.imageNews.fileUrl}')` }}
+                  style={{ backgroundImage: `url('/news/${items.imageNews.fileName}')` }}
                 >
                   <ul className="new__catalog-list">
                     <h4>{items.title[lang]}</h4>
-                    <Link to={`/newinfo/${items._id}`}><li>
+                      <li>
                       {descriptionContinue}{continueText}
-                    </li></Link>
+                    </li>
                   </ul>
                 </div>
+                    </Link>
               )
             })
           }

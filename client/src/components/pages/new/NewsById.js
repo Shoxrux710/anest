@@ -72,13 +72,16 @@ const NewsById = (props) => {
                   }
                   return (
                     <div className="random-news-item" key={items._id}>
+                      <div clasname="random-item-wrapper">
                       <img src={`/news/${items.imageNews.fileName}`} alt="new"></img>
+
                       <div className="random-item-text">
                         <Link to={`/newinfo/${items._id}`}>
                           <p>
                             {descriptionContinue}{continueText}
                           </p>
                         </Link>
+                      </div>
                       </div>
                     </div>
                   )

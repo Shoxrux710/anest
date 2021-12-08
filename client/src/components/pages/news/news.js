@@ -38,9 +38,10 @@ const News = () => {
         </div>
         <div className="container news__wrapper">
           {
-            loading ? <div className="loading">loading</div> :
+            loading ? <div className="loading">loading...</div> :
             news.map(items => {
               return (
+                <Link to={`/newinfo/${items._id}`}>
                 <div 
                 className="news__item"
                  key={items._id}
@@ -51,11 +52,12 @@ const News = () => {
                   </div>
                   <ul className="news__item-list">
                     <h4>{items.title[lang]}</h4>
-                    <Link to={`/newinfo/${items._id}`}><li>
+                      <li>
                       {items.description[lang]}
-                    </li></Link>
+                    </li>
                   </ul>
                 </div>
+                    </Link>
               )
             })
           }

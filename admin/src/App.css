@@ -22,14 +22,14 @@ body{
   margin-bottom: 60px;
 }
 .app .menu_top img{
-  width: 85%;
-  height: 65%;
+  width: 60%;
+  height: 40%;
   display: block;
   margin: auto;
 }
 /* ========== navbar =========== */
 .navbar{
-  background-color: royalblue;
+  /* background-color: royalblue; */
 }
 .navbar h1{
     margin-bottom: 100px;

@@ -10,22 +10,22 @@ const Home = () => {
 
     const {role, userId} = useSelector(state => state.userLogin)
 
-    const [username, setUsername] = useState({})
+    // const [username, setUsername] = useState({})
 
-    console.log("username",username);
+    // console.log("username",username);
 
     const dispatch = useDispatch()
 
-    const getId = (id) => {
-        axios.get(`/api/user/${id}`)
-              .then(response => {
-                setUsername(response.data.user)
-              })  
-    }
+    // const getId = (id) => {
+    //     axios.get(`/api/user/${id}`)
+    //           .then(response => {
+    //             setUsername(response.data.user)
+    //           })  
+    // }
 
-    useEffect(() => {
-        getId(userId)
-    },[userId])
+    // useEffect(() => {
+    //     getId(userId)
+    // },[userId])
 
     const menu = ( 
         <Menu>

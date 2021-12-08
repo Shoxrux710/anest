@@ -34,10 +34,12 @@
 }
 .product-img {
   width: 100%;
-  padding: 20px;
+  height: 208px;
 }
 .product-img img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .products__item-title {
   width: 100%;

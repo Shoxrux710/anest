@@ -14,11 +14,12 @@ import { FaNewspaper } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { MedicineBoxFilled } from '@ant-design/icons';
-import logo from './components/images/logo.png'
+import logo from './images/logo.png'
 import 'antd/dist/antd.css'
 import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import mp3 from './asest/Incoming Message.mp3'
 import { useSelector } from 'react-redux'
 const { Content, Sider } = Layout;
 
@@ -31,6 +32,9 @@ const App = () => {
 
   const authRoutes = (
     <Layout style={{ minHeight: '100vh' }}>
+      <audio id="m">
+          <source src={mp3} />
+      </audio>
       <Sider
         collapsible
         collapsed={collapsed}

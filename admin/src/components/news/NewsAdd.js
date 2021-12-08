@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify'
 
 const NewsAdd = () => {
-
     const {token} = useSelector(state => state.userLogin)
-
     const [titleUz, setTitleUz] = useState("")
     const [titleRu, setTitleRu] = useState("")
     const [titleEn, setTitleEn] = useState("")
@@ -22,7 +20,8 @@ const NewsAdd = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const formData = new FormData(e.target)
+
+        const formData = new FormData(e.target);
 
         axios.post("/api/news/all", formData, {
             headers: {
@@ -38,14 +37,26 @@ const NewsAdd = () => {
                 setDescriptionEn("")
                 setImageNews(null)
 
+                document.getElementById('m').play();
+
                 toast.success(response.data.successMessage)
                 history.push('/admin/news')
+
+                // audioRef.current.play().then(() => {
+                //     console.log('yes')
+                //     toast.success(response.data.successMessage)
+                //     history.push('/admin/news')
+                // }).catch(() => {
+                //     console.log('no')
+                //     
+                // })
             })
             .catch((err) => {
+                document.getElementById('m').play();
                 toast.error(err.response.data.errorMessage)
             })
 
-    }
+    };
 
 
     return (

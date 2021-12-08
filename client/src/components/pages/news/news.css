@@ -32,7 +32,8 @@
   align-items: flex-end;
   justify-content: center;
   padding: 8px 15px;
-  /* background: url('../../../assets/news.png') no-repeat center center / cover; */
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0px -100px 98px 33px rgba(0, 0, 0, 0.781) inset;
   border-radius: 8px;
   
