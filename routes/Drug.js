@@ -5,6 +5,7 @@ const isAuthMiddleware = require('../middleware/isAuth');
 const attachUserMiddleware = require('../middleware/attachUser');
 const checkRoleMiddleware = require('../middleware/checkRole');
 const fs = require('fs')
+const config = require('config')
 const path = require('path')
 const Drug = require('../models/Drug')
 const router = Router()
@@ -13,7 +14,7 @@ const router = Router()
 const deleteOldImage = (fileName) => {
 
     return new Promise((resolve, reject) => {
-        fs.unlink(path.join(__dirname, `../client/public/drug/${fileName}`), err => {
+        fs.unlink(path.join(__dirname, `../client/${config.get('imgFolder')}/drug/${fileName}`), err => {
             resolve()
         })
     })

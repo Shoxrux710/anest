@@ -4,10 +4,14 @@ import { FaFacebook, FaTelegram, FaInstagram } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { HiLocationMarker } from "react-icons/hi";
 import { IoMdCall } from "react-icons/io";
+import { useTranslation } from 'react-i18next'
 
 import "./footer.css";
 
 const Footer = () => {
+
+  const { t } = useTranslation();
+
   return (
     <div className="footer">
       <div className="container-md footer__wrapper">
@@ -18,28 +22,25 @@ const Footer = () => {
             </Link>
           </div>
           <h3>
-            Anest farmaseftical <span>kompaniyasi</span>
+            {t('header.h1')}
           </h3>
         </div>
         <div className="footer__bottom">
           <ul className="footer__list">
             <Link to="/">
-              <li className="footer__link">Bosh sahifa</li>
-            </Link>
-            <Link to="/statistic">
-              <li className="footer__link">Statistika</li>
+              <li className="footer__link">{t('navbar.home')}</li>
             </Link>
             <Link to="/about">
-              <li className="footer__link">Biz haqimizda</li>
+              <li className="footer__link">{t('navbar.about')}</li>
             </Link>
-            <Link to="/news">
-              <li className="footer__link">Yangiliklar</li>
+            <Link to="/new">
+              <li className="footer__link">{t('navbar.news')}</li>
             </Link>
             <Link to="/products">
-              <li className="footer__link">Mahsulotlar</li>
+              <li className="footer__link">{t('navbar.products')}</li>
             </Link>
             <Link to="/contact">
-              <li className="footer__link">Kontakt</li>
+              <li className="footer__link">{t('navbar.contact')}</li>
             </Link>
           </ul>
           <div className="footer__info">

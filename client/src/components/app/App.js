@@ -4,7 +4,6 @@ import Navbar from "../navbar";
 import Footer from "../footer";
 import Home from "../pages/home";
 import Product from "../pages/product";
-// import FourProducts from "../pages/four-products";
 import ProductAll from "../pages/all-products/ProductAll";
 import About from "../pages/about";
 import New from "../pages/new";

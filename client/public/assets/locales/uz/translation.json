@@ -29,5 +29,9 @@
     "contact": {
         "address": "Manzil",
         "send": "Jo'natish"
+    },
+    "news": {
+        "title": "Yangiliklar",
+        "add": "ko'proq"
     }
 }

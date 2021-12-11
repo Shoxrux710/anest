@@ -83,7 +83,7 @@ const Product = (props) => {
         <div className="container products__wrapper">
           {
             loading ? <div className="loading">Loading</div> :
-            drugs.map((items) => {
+            drugs.map((items, index) => {
 
                 let descriptionContinue = '';
                 let continueText = '';
@@ -98,7 +98,7 @@ const Product = (props) => {
                 }
 
                 return (
-                    <Link to={`/product/${items._id}`}>
+                    <Link to={`/product/${items._id}`} key={index} >
                   <div className="products__item" key={items._id}>
                     <div className="product-img">
                       <img src={`/drug/${items.imageDrug.fileName}`} alt="dori"></img>

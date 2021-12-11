@@ -1,22 +1,23 @@
 const mongoose = require('mongoose')
 const Login = require('../models/Login')
 const bcrypt = require('bcryptjs')
+const config = require('config')
 
 
 module.exports = async () => {
 
-    await mongoose.connect('mongodb://localhost:27017/anest',
+    await mongoose.connect(config.get('mongoUri'),
         { useNewUrlParser: true, useUnifiedTopology: true })
 
         const admin = await Login.findOne()
-        passwordHashed = await bcrypt.hash('123123', 12)
+        passwordHashed = await bcrypt.hash('qwert123', 12)
 
         if (!admin){
 
             const user = new Login({
-                name: 'Shoxrux',
-                surname: 'Buxorov',
-                login: 'qwert',
+                name: 'anest',
+                surname: 'anestuz',
+                login: 'anest444',
                 password: passwordHashed,
                 role: 'super-admin'
             })

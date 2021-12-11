@@ -8,9 +8,9 @@ import "./news.css";
 
 const News = () => {
 
+  const { t } = useTranslation()
   const {lang} = useSelector(state => state.userToken)
 
-  const { t } = useTranslation()
   const [news, setNews] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -39,9 +39,20 @@ const News = () => {
         <div className="container news__wrapper">
           {
             loading ? <div className="loading">loading...</div> :
-            news.map(items => {
+            news.map((items, index) => {
+              let descriptionContinue = '';
+                let continueText = '';
+
+                for (let i = 0; i < items.description[lang].length; i++) {
+                  if (i < 60) {
+                    descriptionContinue += items.description[lang][i];
+                  } else {
+                    continueText = '...';
+                    break;
+                  }
+                }
               return (
-                <Link to={`/newinfo/${items._id}`}>
+                <Link to={`/newinfo/${items._id}`} key={index}>
                 <div 
                 className="news__item"
                  key={items._id}
@@ -53,7 +64,7 @@ const News = () => {
                   <ul className="news__item-list">
                     <h4>{items.title[lang]}</h4>
                       <li>
-                      {items.description[lang]}
+                      {descriptionContinue}{continueText}
                     </li>
                   </ul>
                 </div>

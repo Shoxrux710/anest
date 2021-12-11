@@ -6,6 +6,7 @@ const {telegramValidator} = require('../utils/validator')
 const isAuthMiddleware = require('../middleware/isAuth');
 const attachUserMiddleware = require('../middleware/attachUser');
 const checkRoleMiddleware = require('../middleware/checkRole');
+const config = require('config')
 const axios = require('axios')
 const fs = require('fs')
 const path = require('path')
@@ -15,7 +16,7 @@ const router = Router()
 const deleteOldImage = (fileName) => {
 
     return new Promise((resolve, reject) => {
-        fs.unlink(path.join(__dirname, `../client/public/news/${fileName}`), err => {
+        fs.unlink(path.join(__dirname, `../client/${config.get('imgFolder')}/news/${fileName}`), err => {
             resolve()
         })
     })
@@ -95,7 +96,7 @@ router.get('/limit', async (req, res) => {
         const skip = req.query.skip ? Number(req.query.skip) : 0
         const limit = req.query.limit ? Number(req.query.limit) : 0
 
-        const newsCount = await News.countDocuments()
+        const newsCount = await News.countDocuments() - 3
         const newsOne = await News.find().skip(0).limit(1)
         const newsTwo = await News.find().skip(1).limit(2)
         const newsThree = await News.find().skip(skip).limit(limit)
@@ -103,7 +104,8 @@ router.get('/limit', async (req, res) => {
         res.status(200).json({
             newsOne,
             newsTwo,
-            newsThree
+            newsThree,
+            newsCount
         })
 
     } catch (err) {
@@ -226,6 +228,27 @@ router.put('/update/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMiddl
             if (err) return res.status(400).json({ errorMessage: "Xato" })
             req.files.imageNews ? await deleteOldImage(oldFileName) : null
             res.status(200).json({ successMessage: "Yangilandi" })
+        })
+    })
+})
+
+
+// view 
+
+router.put('/view/:id', (req, res) => {
+    
+    const {id} = req.params
+
+    News.findById(id, (err, oneNews) => {
+        if (err) return res.status(400).json({errorMessage: "Xato"})
+        
+        const view = oneNews.view + 1
+
+        oneNews.view = view
+
+        oneNews.save(err => {
+            if (err) return res.status(400).json({errorMessage: "Xato"})
+            res.status(200).json({view})
         })
     })
 })

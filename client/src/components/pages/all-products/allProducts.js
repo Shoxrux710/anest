@@ -29,8 +29,8 @@ const AllProducts = (props) => {
               }
 
             return (
-                <Link to={`/product/${items._id}`}>
-              <div className="products__item" key={items._id}>
+                <Link to={`/product/${items._id}`} key={items._id}>
+              <div className="products__item" >
                 <div className="product-img">
                   <img src={`/drug/${items.imageDrug.fileName}`} alt=""></img>
                 </div>

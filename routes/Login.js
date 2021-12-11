@@ -4,6 +4,7 @@ const {registerValidator} = require('../utils/validator')
 const {authValidator} = require('../utils/validator')
 const {validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs')
+const config = require('config')
 const jwt = require('jsonwebtoken')
 const router = Router()
 
@@ -98,7 +99,7 @@ router.post('/login', authValidator, async (req, res) => {
             id: user._id
         }
 
-        const token = jwt.sign(paylaod, "qENcLeoXsi5FsYIswDeRL48uzzouGTQ1")
+        const token = jwt.sign(paylaod, config.get('jwtSecretKey'))
 
         res.status(200).json({
             token,

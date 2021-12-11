@@ -1,0 +1,6 @@
+{
+    "port": 3000,
+    "mongoUri": "mongodb+srv://center:710sh6465@cluster0.kzulh.mongodb.net/anest",
+    "imgFolder": "build",
+    "jwtSecretKey": "qENcLeoXsi5FsYIswDeRL48uzzouGTQ1"
+}

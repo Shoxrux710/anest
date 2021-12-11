@@ -62,7 +62,7 @@ const Navbar = ({ white, blue }) => {
       <div className="container nav__wrapper">
         <div className="logo">
           <Link to="/">
-            <img src="./img/logo.png" alt="logo"></img>
+            <img src="/img/logo.png" alt="logo"></img>
           </Link>
         </div>
         <div className={listShowStyle}>

@@ -29,5 +29,9 @@
     "contact": {
         "address": "Address",
         "send": "Send"
+    },
+    "news": {
+        "title": "News",
+        "add": "more"
     }
 }

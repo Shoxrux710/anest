@@ -19,7 +19,6 @@ import 'antd/dist/antd.css'
 import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import mp3 from './asest/Incoming Message.mp3'
 import { useSelector } from 'react-redux'
 const { Content, Sider } = Layout;
 
@@ -32,9 +31,6 @@ const App = () => {
 
   const authRoutes = (
     <Layout style={{ minHeight: '100vh' }}>
-      <audio id="m">
-          <source src={mp3} />
-      </audio>
       <Sider
         collapsible
         collapsed={collapsed}

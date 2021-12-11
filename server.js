@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const middleware = require('./middleware/file');
+const path = require('path');
+const config = require('config')
 const app = express();
 
 // routes
@@ -27,6 +29,22 @@ app.use('/api/user', loginRouter)
 
 
 
-const PORT = 4006
+// listen
+const PORT = config.get('port')
+
+if (process.env.NODE_ENV === 'production'){
+    app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+    app.use('/', express.static(path.join(__dirname, 'admin', 'build')))
+
+    app.get('/admin*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'admin', 'build', 'index.html'))
+    })
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
+
+
 
 app.listen(PORT, () => console.log(`server ${PORT} da ishladi`))

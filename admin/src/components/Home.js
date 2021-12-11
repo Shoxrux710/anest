@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { Menu, Dropdown } from 'antd';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 import {logOut} from './redux/action/userAction'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
 const Home = () => {
 
-    const {role, userId} = useSelector(state => state.userLogin)
+    const {role} = useSelector(state => state.userLogin)
 
     // const [username, setUsername] = useState({})
 

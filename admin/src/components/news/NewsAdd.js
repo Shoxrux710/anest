@@ -37,22 +37,12 @@ const NewsAdd = () => {
                 setDescriptionEn("")
                 setImageNews(null)
 
-                document.getElementById('m').play();
-
                 toast.success(response.data.successMessage)
                 history.push('/admin/news')
 
-                // audioRef.current.play().then(() => {
-                //     console.log('yes')
-                //     toast.success(response.data.successMessage)
-                //     history.push('/admin/news')
-                // }).catch(() => {
-                //     console.log('no')
-                //     
-                // })
+        
             })
             .catch((err) => {
-                document.getElementById('m').play();
                 toast.error(err.response.data.errorMessage)
             })
 
