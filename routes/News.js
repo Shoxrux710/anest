@@ -24,6 +24,67 @@ const deleteOldImage = (fileName) => {
 
 // post
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     News: 
+ *       type: object
+ *       properties:
+ *          titleUz: 
+ *            type: string
+ *          titleRu: 
+ *            type: string  
+ *          titleEn:
+ *            type: string
+ *          descriptionUz: 
+ *            type: string
+ *          descriptionRu:
+ *            type: string
+ *          descriptionEn:
+ *            type: string 
+ *          view: 
+ *            type: number
+ *            description: default 0 kiriting 
+ *          imageNews:
+ *            type: string
+ *            format: binary 
+ *       required:
+ *         - titleUz
+ *         - titleRu
+ *         - titleEn
+ *         - descriptionUz
+ *         - descriptionRu
+ *         - descriptionEn
+ *         - view 
+ */
+
+/**
+ * @swagger
+ * /api/news/all:
+ *  post:
+ *    summary: yangilarni kiritish
+ *    tags: [News]
+ *    requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *              type: object
+ *              $ref: "#/components/schemas/News"
+ *    security:
+ *       - bearerAuth: []
+ *    responses:
+ *       200:
+ *         description: response 200   
+ *       400:
+ *         description: response 400
+ *       500:
+ *         description: response 500      
+ *   
+ * 
+ */
+
 router.post('/all', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware('admin'), newsValidator, (req, res) => {
 
     const errors = validationResult(req)
@@ -67,6 +128,32 @@ router.post('/all', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware(
 })
 
 // get
+/**
+ * @swagger
+ * /api/news/all:
+ *  get:
+ *    summary: hamma ma'lumotlarni chiqarib beradi
+ *    tags: [News]
+ *    parameters:
+ *      - in: query
+ *        name: pagination
+ *        schema:
+ *          type: object
+ *        requried:
+ *          - skip
+ *          - limit
+ *        properties:
+ *          skip:
+ *            type: number
+ *          limit: 
+ *            type: number
+ *    responses:
+ *        200:
+ *          description: response 200   
+ *        500:
+ *          description: response 500          
+ *        
+ */
 
 router.get('/all', async (req, res) => {
 
@@ -90,11 +177,38 @@ router.get('/all', async (req, res) => {
     }
 })
 
+/**
+ * @swagger
+ * /api/news/limit:
+ *  get:
+ *    summary: yangilarni limit bo'yicha chiqarib beradi
+ *    tags: [News]
+ *    parameters:
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *           type: object
+ *        required: 
+ *           - skip
+ *           - limit
+ *        properties:
+ *           skip:
+ *             type: number
+ *           limit: 
+ *              type: number 
+ *    responses: 
+ *        200:
+ *          description: response 200   
+ *        500:
+ *          description: response 500      
+ * 
+ */
+
 router.get('/limit', async (req, res) => {
 
     try {
         const skip = req.query.skip ? Number(req.query.skip) : 0
-        const limit = req.query.limit ? Number(req.query.limit) : 0
+        const limit = req.query.limit ? Number(req.query.limit) : 0     
 
         const newsCount = await News.countDocuments() - 3
         const newsOne = await News.find().skip(0).limit(1)
@@ -114,6 +228,25 @@ router.get('/limit', async (req, res) => {
 })
 
 // get/:id
+/**
+ * @swagger
+ * /api/news/all/{id}:
+ *   get:
+ *    summary: har bir yangilikni chiqarib beradi
+ *    tags: [News]
+ *    parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *            type: string
+ *         required: true 
+ *    responses:
+ *       200:
+ *         description: resposne 200
+ *       500: 
+ *         description: response 500 
+ * 
+ */
 
 router.get('/all/:id', (req, res) => {
 
@@ -127,6 +260,20 @@ router.get('/all/:id', (req, res) => {
 })
 
 // random
+
+/**
+ * @swagger
+ * /api/news/random:
+ *   get:
+ *     summary: hamma yangilarni chiqarib beradi
+ *     tags: [News]
+ *     responses:
+ *       200:
+ *         description: response 200
+ *       500: 
+ *         description: response 500
+ * 
+ */
 
 router.get('/random', async (req, res) => {
 
@@ -166,6 +313,27 @@ router.get('/random', async (req, res) => {
 
 // delete
 
+/**
+ * @swagger
+ * /api/news/delete/{id}:
+ *  delete:
+ *    summary: yangilarni id bo'yicha o'chirish
+ *    tags: [News]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema: 
+ *          type: string
+ *        required: true
+ *    security:
+ *      - bearerAuth: []
+ *    responses:
+ *       200:
+ *         description: response 200
+ *       500:
+ *         description: response 500   
+ */
+
 router.delete('/delete/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware('admin'), (req, res) => {
 
     const { id } = req.params
@@ -185,6 +353,34 @@ router.delete('/delete/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMi
 })
 
 // update
+
+/**
+ * @swagger
+ * /api/news/update/{id}:
+ *  put: 
+ *    summary: yangilarni yangilash
+ *    tags: [News]
+ *    parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *    requestBody:
+ *       content:
+ *          multipart/form-data:
+ *             schema:
+ *                type: object
+ *                $ref: "#/components/schemas/News"  
+ *    security:
+ *      - bearerAuth: []
+ *    responses:
+ *      200:
+ *        description: response 200
+ *      500: 
+ *        description: response 500  
+ *     
+ */
 
 router.put('/update/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware('admin'), (req, res) => {
 
@@ -234,6 +430,26 @@ router.put('/update/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMiddl
 
 
 // view 
+/**
+ * @swagger
+ * /api/news/view/{id}:
+ *  put: 
+ *   summary: yangiliklarni ko'rganlari sonini ko'rsatadi
+ *   tags: [News]
+ *   parameters: 
+ *      - in: path
+ *        name: id
+ *        schema:
+ *           type: string
+ *        required: true  
+ *   responses:
+ *      200:
+ *        description: response 200
+ *      500:
+ *        description: response 500 
+ *   
+ *           
+ */
 
 router.put('/view/:id', (req, res) => {
     

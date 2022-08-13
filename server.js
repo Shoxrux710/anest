@@ -3,6 +3,8 @@ const cors = require('cors');
 const middleware = require('./middleware/file');
 const path = require('path');
 const config = require('config')
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
 const app = express();
 
 // routes
@@ -10,8 +12,29 @@ const newRouter = require('./routes/News')
 const drugRouter = require('./routes/Drug')
 const loginRouter = require('./routes/Login')
 
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: "Anest API",
+            description: "Anest information API",
+            contact: {
+                name: "Buxorov Shoxrux"
+            },
+            servers: ["http://localhost:4006"]
+        }
+    },
+    apis: ['./routes/*.js']
+}
+
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+
+
+
 app.use(express.json({ extended: true }))
 app.use(cors())
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.use(middleware.fields([
     {name: 'imageNews', maxCount: 1},
     {name: 'imageDrug', maxCount: 1}
@@ -21,6 +44,7 @@ app.use(middleware.fields([
 // mongoDB
 const db = require('./utils/db')
 db()
+
 
 
 app.use('/api/news', newRouter)

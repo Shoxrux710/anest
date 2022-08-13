@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 import { toast } from 'react-toastify'
@@ -12,35 +12,34 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
 
-    
 
-    const Submit = async (e) => {
+
+    const Submit = (e) => {
         e.preventDefault()
-        try {
-            const user = {
-                name,
-                surname,
-                login,
-                password,
-                confirm
-            }
-            const res = await axios.post("/api/user/register", user)
-                toast.success(res.data.successMessage)
+        const message = {
+            name,
+            surname,
+            login,
+            password,
+            confirm
+        }
+        axios.post("/api/user/register", message)
+            .then(response => {
                 setName("")
                 setLogin("")
                 setPassword("")
                 setConfirm("")
                 setSurname("")
-
-        } catch (err) {
-            toast.error(err.response.data.errorMessage)
-        }
+                toast.success(response.data.successMessage)
+            }).catch(err => {
+                toast.error(err.response.data.errorMessage)
+            })
     }
 
 
     return (
         <div className="login">
-              <Container>
+            <Container>
                 <Row>
                     <Col className="form-auto" lg={5}>
                         <form onSubmit={Submit}>

@@ -30,6 +30,7 @@ const DrugAdd = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         const formData = new FormData(e.target)
+        console.log(formData)
 
         axios.post("/api/drug/all", formData, {
             headers: {

@@ -23,14 +23,14 @@ const Drug = (props) => {
             headers: {
                 authorization: `Bearer ${token}`
             }
-        })
-              .then(response => {
-                toast.success(response.data.seccess)
-                drugsProduct(skip)
-              })
-              .catch(err => {
-                toast.error(err.response.data.errorMessage)
-              })  
+        }).then(response => {
+            toast.success(response.data.seccess)
+            drugsProduct(skip)
+          })
+          .catch(err => {
+            toast.error(err.response.data.errorMessage)
+          }) 
+               
     }
 
     return (

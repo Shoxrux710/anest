@@ -5,6 +5,8 @@ module.exports = (req, res, next) => {
     
     const authHeader = req.headers.authorization
 
+    console.log(req.headers)
+
     if (!req.headers.authorization) return res.sendStatus(401)
 
     const token = authHeader.split(' ')[1]

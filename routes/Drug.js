@@ -24,10 +24,120 @@ const deleteOldImage = (fileName) => {
 
 // post
 
+/**
+ * @swagger
+ * components:
+ *  securitySchemes:
+ *      bearerAuth:
+ *          type: http
+ *          scheme: bearer
+ *          bearerFormat: JWT
+ *  security:
+ *      - bearerAuth: []
+ *  schemas:
+ *      Drug:
+ *        type: object
+ *        properties:
+ *            titleUz: 
+ *              type: string
+ *              description: titleuz
+ *            titleRu: 
+ *              type: string  
+ *              description: titleru 
+ *            titleEn:
+ *              type: string
+ *              description: titleen 
+ *            descriptionUz: 
+ *              type: string
+ *              description: descriptionuz
+ *            descriptionRu:
+ *              type: string
+ *              description: descriptionru
+ *            descriptionEn:
+ *              type: string 
+ *              description: descriptionen
+ *            usedUz:
+ *              type: string
+ *              description: useduz
+ *            usedRu: 
+ *              type: string
+ *              description: usedru
+ *            usedEn:
+ *              type: string
+ *              description: useden
+ *            structureUz:
+ *              type: string
+ *              description: structureuz
+ *            structureRu:
+ *              type: string
+ *              description: structureru
+ *            structureEn:
+ *              type: string   
+ *              description: structureen
+ *            imageDrug:
+ *              type: string
+ *              format: binary
+ *        required:
+ *            - titleUz
+ *            - titleRu
+ *            - titleEn
+ *            - descriptionUz
+ *            - descriptionRu
+ *            - descriptionEn
+ *            - usedUz
+ *            - usedRu
+ *            - usedEn
+ *            - structureUz
+ *            - structureRu
+ *            - structureEn 
+ *        example:
+ *              titleUz: titleuz
+ *              titleRu: titleru
+ *              titleEn: titleen 
+ *              descriptionUz: descriptionuz
+ *              descriptionRu: descriptionru
+ *              descriptionEn: descriptionen 
+ *              usedUz: useduz
+ *              usedRu: usedru
+ *              usedEn: useden
+ *              structureUz: structureuz
+ *              structureRu: structureru 
+ *              structureEn: structureen
+ * 
+ */
+
+/**
+ * @swagger
+ * /api/drug/all:
+ *  post:
+ *    summary: dorilarni kiritish
+ *    tags: [Drug]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *          multipart/form-data:
+ *             schema:
+ *                type: object
+ *                $ref: "#/components/schemas/Drug"
+ *    security:
+ *      - bearerAuth: []
+ *                  
+ *    responses: 
+ * 
+ *      200:
+ *         description: response 200
+ *      400: 
+ *         description: response 400
+ *      500:
+ *         description: response 500
+ *  
+ */
+
 router.post('/all', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware('admin'), drugValidator, (req, res) => {
 
     const errors = validationResult(req)
-
+    console.log(req.body)
+    console.log(req.files)
     if (!errors.isEmpty()){
         return res.status(400).json({errors: errors.array(), errorMessage: `Iltimos to'ldiring`})
     }
@@ -83,6 +193,32 @@ router.post('/all', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware(
     })
 })
 
+/**
+ * @swagger
+ * /api/drug/all:
+ *  get:
+ *   summary: get all
+ *   tags: [Drug]
+ *   parameters:
+ *      - in: query
+ *        name: pagination
+ *        schema: 
+ *          type: object
+ *        requried: 
+ *          - skip
+ *          - limit
+ *        properties:
+ *           skip:
+ *             type: number
+ *           limit:
+ *             type: number  
+ * 
+ *   responses: 
+ *      200:
+ *        description: response 200   
+ *      500:
+ *        description: response 500    
+ */
 // get
 
 router.get('/all', async(req, res) => {
@@ -109,6 +245,27 @@ router.get('/all', async(req, res) => {
 
 // get/:id
 
+/**
+ * @swagger
+ * /api/drug/all/{id}:
+ *   get:
+ *    summary: har bir dori ma'lumotlarini chiqarib beradi
+ *    tags: [Drug]
+ *    parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *    responses: 
+ *         200: 
+ *           description: response 200
+ *         500:
+ *           description: response 500
+ *         
+ * 
+ */
+
 router.get('/all/:id', (req, res) => {
     
     const {id} = req.params
@@ -121,6 +278,21 @@ router.get('/all/:id', (req, res) => {
 })
 
 // random
+
+/**
+ * @swagger
+ * /api/drug/random:
+ *  get:
+ *    summary: dorilarni random chiqarish
+ *    tags: [Drug]
+ * 
+ *    responses: 
+ *         200: 
+ *           description: response 200
+ *         500:
+ *           description: response 500
+ *    
+ */
 
 router.get('/random', async (req, res) => {
   
@@ -159,6 +331,29 @@ router.get('/random', async (req, res) => {
 
 // delete
 
+/**
+ * @swagger
+ * /api/drug/delete/{id}:
+ *  delete:
+ *    summary: dorini o'chirish
+ *    tags: [Drug]
+ *    parameters:
+ *      - in: path 
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true 
+ *    security:
+ *      - bearerAuth: []
+ *   
+ *    responses: 
+ *       200:
+ *         description: response 200 
+ *       500:
+ *         description: response 400   
+ *       
+ */
+
 router.delete('/delete/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware('admin'), (req, res) => {
 
     const {id} = req.params
@@ -181,6 +376,33 @@ router.delete('/delete/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMi
 
 
 // update
+/**
+ * @swagger
+ * /api/drug/update/{id}:
+ *  put:
+ *    summary: dorilarni yangilash
+ *    tags: [Drug]
+ *    parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *            type: string
+ *         required: true
+ *    requestBody:  
+ *      content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             $ref: "#/components/schemas/Drug"
+ *    security:
+ *      - bearerAuth: []
+ *    responses:
+ *      200:
+ *        description: reponse 200       
+ *      500: 
+ *        description: reponse 500 
+ * 
+ */
 
 router.put('/update/:id', isAuthMiddleware, attachUserMiddleware, checkRoleMiddleware('admin'), (req, res) => {
 
