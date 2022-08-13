@@ -1,4 +1,4 @@
-admin/build
+# admin/build
 admin/node_modules
-client/build
+# client/build
 client/node_modules
