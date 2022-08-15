@@ -4,7 +4,7 @@ module.exports = {
             name: "anest",
             script: "server.js",
             env: {
-                "NODE_ENV": "default"
+                "NODE_ENV": "production"
             }
         }
     ]
